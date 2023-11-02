@@ -1,0 +1,1073 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0 auto;
+        padding: 16px;
+        background-color: #efefef;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-block-start: 0;
+        margin-block-end: 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      p {
+        padding: 24px 0 0 0;
+        margin: 0;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .fillimgbox {
+        display: flex;
+        justify-content: center;
+      }
+
+      .fillimgbox img {
+        width: 40%;
+      }
+
+      .bbold {
+        font-weight: 600;
+      }
+
+      .calculator h3 {
+        text-decoration: underline;
+        margin-block-start: 2em;
+      }
+
+      .calc-wrapper {
+        width: 1140px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        margin: 0 auto;
+        gap: 32px;
+      }
+
+      .calculator {
+        width: 65%;
+        height: auto;
+        margin: 0;
+        padding: 40px;
+        background-color: #fefefa;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .calculator label {
+        display: block;
+        padding: 16px 0 8px 0;
+        width: 100%;
+      }
+
+      .calculator input {
+        display: inline-block;
+        padding: 8px;
+        width: 85%;
+        font-size: 18px;
+      }
+
+      .nbpreis {
+        width: 35%;
+        height: auto;
+        margin: 0;
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 160px;
+      }
+
+      .nbpreis label {
+        display: block;
+        padding: 16px 0 8px 0;
+        width: 100%;
+      }
+
+      .nbpreis input {
+        display: inline-block;
+        padding: 8px;
+        width: 80%;
+        font-size: 24px;
+        font-weight: 600;
+        color: #6bb64a;
+        border: 1px dashed #353d3f;
+        background: none;
+      }
+
+      input[type=radio] {
+        border: 0px;
+        width: 100%;
+        height: 1.5em;
+        margin: 0;
+        padding: 0;
+      }
+
+      input.input100 {
+        width: 100%;
+      }
+
+      .input100 span {
+        width: 20%;
+        font-weight: 600;
+      }
+
+      .ffgroup {
+        display: flex;
+        flex-direction: row;
+        flex: 1 auto;
+        column-gap: 50px;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+
+      .ffgroup label {
+        padding: 0;
+      }
+
+      .calculator button {
+        width: 100%;
+        padding: 10px;
+        background-color: #6bb64a;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-top: 24px;
+        font-size: 16px;
+      }
+
+      .nbpreis button {
+        width: 100%;
+        padding: 10px;
+        background-color: #6bb64a;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-top: 24px;
+        font-size: 24px;
+      }
+
+      .radio-toolbar {
+        margin: 10px 0;
+        display: flex;
+        flex-direction: row;
+        flex: 1 auto;
+        justify-content: space-between;
+        gap: 18px;
+        width: 100%;
+      }
+
+      .radio-toolbar input[type="radio"] {
+        opacity: 0;
+        position: fixed;
+        width: auto;
+      }
+
+      .radio-toolbar label {
+        display: inline-block;
+        background-color: #353d3f;
+        padding: 10px 8px;
+        font-size: 16px;
+        border: 2px solid #353d3f;
+        border-radius: 4px;
+        text-align: center;
+        cursor: pointer;
+        color: #ffffff;
+      }
+
+      .radio-toolbar label:hover {
+        background-color: #6bb64a;
+        border: 2px dashed #293133;
+        color: #ffffff;
+      }
+
+      .radio-toolbar input[type="radio"]:focus+label {
+        border: 2px dashed #293133;
+      }
+
+      .radio-toolbar input[type="radio"]:checked+label {
+        background-color: #6bb64a;
+        border: 2px dashed #293133;
+        color: #ffffff;
+      }
+
+      input[type="radio"]:disabled+label {
+        background-color: rgb(181, 181, 181);
+        border-color: #000000;
+        border: 2px dashed rgb(181, 181, 181);
+        color: #000000;
+        pointer-events: none;
+        cursor: not-allowed;
+      }
+
+
+      :root {
+        --arrow-bg: rgba(255, 255, 255, 0);
+        --arrow-icon: url(https://mecklenburger-textildruck.de/wp-content/uploads/pfeil-runter.svg);
+        --option-bg: rgb(0, 0, 0);
+        --select-bg: rgba(255, 255, 255, 0.2);
+      }
+
+      select {
+        /* Reset */
+        appearance: none;
+        border: 0;
+        outline: 0;
+        font: inherit;
+        /* Personalize */
+        width: 100%;
+        padding: 1rem 4rem 1rem 1rem;
+        background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
+          linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
+        color: #000000;
+        border-radius: 0.25em;
+        box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+
+        /* Remove IE arrow */
+        &::-ms-expand {
+          display: none;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        option {
+          color: inherit;
+          background-color: var(--option-bg);
+        }
+      }
+
+      #anfrage-button {
+        display: none;
+      }
+
+      #popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+
+      #popup-content {
+        background-color: #fff;
+        padding: 40px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        font-size: 20px;
+        font-weight: 400;
+      }
+
+      #popup-content button#close-popup {
+        width: 180px;
+        align-self: center;
+        font-size: 18px;
+        margin-top: 16px;
+      }
+
+      .error-message {
+        display: none;
+      }
+
+      textarea {
+        width: 100%;
+      }
+
+      button.remove-button {
+        background-color: #c53232;
+        font-size: 16px;
+      }
+
+
+      .stick-dropdown, .druck-dropdown {
+        display: none;
+      }
+
+      .row {
+        display: flex;
+        flex-direction: row;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .flex-item {
+        flex: 1 auto;
+      }
+
+      .flex-item input {
+        width: 100%;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="calc-wrapper">
+      <div class="calculator">
+        <h1>Preisrechner für Stick und Druck</h1>
+        <div class="radio-toolbar">
+          <input type="radio" id="stick" name="option" value="stick">
+          <label for="stick" class="inline-block">Stick</label>
+          <input type="radio" id="druck" name="option" value="druck">
+          <label for="druck" class="inline-block">Druck</label>
+        </div>
+<!----------------------------------------------------------------------------- Stick Feld ----------------------------------------------------------------------------->
+        <div class="stick-dropdown" id="stick-dropdown">
+          <br><hr>
+          <h3>Stickfläche (z.B. Rücken/Ärmel)</h3>
+          <label for="size" class="bbold">Größe wählen:</label>
+          <select id="size" class="required">
+            <option selected value="10x5">10 cm x 5 cm (bis 50 cm²)</option>
+            <option value="10x10">10 cm x 10 cm (bis 100 cm²)</option>
+            <option value="20x10">20 cm x 10 cm (bis 200 cm²)</option>
+            <option value="30x10">30 cm x 10 cm (bis 300 cm²)</option>
+            <option value="20x20">20 cm x 20 cm (bis 400 cm²)</option>
+            <option value="30x20">30 cm x 20 cm (bis 600 cm²)</option>
+            <option value="30x30">30 cm x 30 cm (bis 900 cm²)</option>
+            <option value="40x35">40 cm x 35 cm (bis 1400 cm²)</option>
+          </select>    
+
+          <p class="bbold">Flächenfüllung:</p>
+          <div class="radio-toolbar">
+            <input type="radio" id="filling25" name="filling" value="0.25" class="required" onclick="showButton()">
+            <label for="filling25">25%</label>
+            <input type="radio" id="filling50" name="filling" value="0.50" class="required" onclick="showButton()">
+            <label for="filling50">50%</label>
+            <input type="radio" id="filling75" name="filling" value="0.75" class="required" onclick="showButton()">
+            <label for="filling75">75%</label>
+            <input type="radio" id="filling100" name="filling" value="1.00" class="required" onclick="showButton()">
+            <label for="filling100">100%</label>    
+          </div>
+          
+          <div class="fillimgbox">
+            <img id="fillingImage25" src="https://mecklenburger-textildruck.de/wp-content/uploads/beispielbild_25.webp" style="display: none;">
+            <img id="fillingImage50" src="https://mecklenburger-textildruck.de/wp-content/uploads/beispielbild_50.webp" style="display: none;">
+            <img id="fillingImage75" src="https://mecklenburger-textildruck.de/wp-content/uploads/beispielbild_75.webp" style="display: none;">
+            <img id="fillingImage100" src="https://mecklenburger-textildruck.de/wp-content/uploads/beispielbild_100.webp" style="display: none;">
+          </div>
+          <p class="bbold">Stickdatei vorhanden?</p>
+          <div class="radio-toolbar">
+            <input type="radio" id="stickja" name="stickdatei" value="stickja" class="required" onclick="showButton()">
+            <label for="stickja" class="inline-block">Ja</label>
+            <input type="radio" id="sticknein" name="stickdatei" value="sticknein" class="required" onclick="showButton()">
+            <label for="sticknein" class="inline-block">Nein</label>
+          </div>
+        </div>
+<!----------------------------------------------------------------------------- Druck Feld ----------------------------------------------------------------------------->
+
+          <div class="druck-dropdown" id="druck-dropdown">
+<br><hr>
+
+<h3>DTF / Transferdruckfläche (Brust, Rücken etc.)</h3>
+<div class="row">
+    <div class="flex-item">
+    <label for="dbreite">Breite</label>
+    <input type="number" id="dbreite" min="1" placeholder="10 cm" class="flex-item">
+    </div>
+    <div class="flex-item">
+    <label for="dhoehe">Höhe</label>
+    <input type="number" id="dhoehe" min="1" placeholder="5 cm" class="flex-item">
+    </div>
+</div>
+<div class="radio-toolbar flexwrap">
+    <input type="radio" id="inklusivepatchen" name="dtfpatches" value="inklusivepatchen" class="required">
+    <label for="inklusivepatchen" class="inline-block">Inklusive Patchen</label>
+    <input type="radio" id="nurtransfer" name="dtfpatches" value="nurtransfer" class="required">
+    <label for="nurtransfer" class="inline-block">Nur Transfer</label>
+  </div>
+
+<br><hr>
+
+<h3>DTF / Transferdruckfläche (Ärmeln, bis zu 50 cm²)</h3>
+<div class="row">
+    <div class="flex-item">
+    <label for="adbreite">Breite</label>
+    <input type="number" id="adbreite" min="1" placeholder="10 cm" class="flex-item">
+    </div>
+    <div class="flex-item">
+    <label for="adhoehe">Höhe</label>
+    <input type="number" id="adhoehe" min="1" placeholder="5 cm" class="flex-item">
+    </div>
+</div>
+<div class="radio-toolbar flexwrap">
+    <input type="radio" id="ainklusivepatchen" name="dtfpatches" value="inklusivepatchen" class="required">
+    <label for="ainklusivepatchen" class="inline-block">Inklusive Patchen</label>
+    <input type="radio" id="anurtransfer" name="dtfpatches" value="nurtransfer" class="required">
+    <label for="anurtransfer" class="inline-block">Nur Transfer</label>
+  </div>
+</div>
+
+
+
+
+<!----------------------------------------------------------------------------- textilien feld----------------------------------------------------------------------------->
+<br><hr>
+          <p class="bbold">Textilien?</p>
+          <div class="radio-toolbar flexwrap">
+            <input type="radio" id="tbestellen" name="textilienjn" value="tbestellen" class="required">
+            <label for="tbestellen" class="inline-block">Textilien bestellen</label>
+            <input type="radio" id="tvorhanden" name="textilienjn" value="tvorhanden" class="required">
+            <label for="tvorhanden" class="inline-block">Textilien vorhanden</label>
+          </div>
+
+          <input type="text" id="tbestelltext" style="display: none; width: 96%;" placeholder="Welche Textilien und wie viele?">
+          <label for="wastextil" class="bbold">Was benötigen Sie?</label>
+          <textarea id="wastextil" name="wastextil" rows="4" cols="30" placeholder="z.B. T-Shirt, Polo, Caps, Hoody, Jacke, Hose oder Tasche?"></textarea>
+          <label for="marken" class="bbold">Gewünschte Marken?</label>
+          <select id="marken" class="required">
+            <option selected value="stanley stella">Stanley Stella</option>
+            <option value="mascot">Mascot</option>
+            <option value="hakro">Hakro</option>
+            <option value="greiff">Greiff</option>
+            <option value="promodoro">promodoro</option>
+            <option value="craft">Craft</option>
+            <option value="just hoods awdis">JustHoods AWDis</option>
+            <option value="clique">Clique</option>
+            <option value="beechfield">Beechfield</option>
+            <option value="b & c collection">B & C Collection</option>
+            <option value="stedman collection">Stedman Collection</option>
+            <option value="velilla">Velilla</option>
+            <option value="russell">Russell</option>
+        </select>
+
+      </div>
+<!----------------------------------------------------------------------------- Preisanzeige ----------------------------------------------------------------------------->
+    <div class="nbpreis">
+      <div class="input100">
+        <label for="quantity" class="bbold">Menge:</label>
+        <input type="number" id="quantity" min="1" value="1">
+        <span>Stück</span>
+      </div>
+      <div class="input100">
+        <label for="netto-price" class="bbold">Nettopreis:</label>
+        <input type="text" id="netto-price" disabled>
+        <span>EUR</span>
+      </div>
+      <div class="input100">
+        <label for="brutto-price" class="bbold">Bruttopreis (inkl. 19% MwSt):</label>
+        <input type="text" id="brutto-price" disabled>
+        <span>EUR</span>
+      </div>
+<!----------------------------------------------------------------------------- Berechnen/Anfrage Button ----------------------------------------------------------------------------->
+      <a href="mailto:info@mecklenburger-textildruck.de" target="_blank">
+        <button id="anfrage-button">Jetzt anfragen</button>
+      </a>
+      <button onclick="calculateTotalPrice()" id="berechnen">Berechnen</button>
+    </div>
+    <div id="popup" style="display: none;">
+      <div id="popup-content">
+        <p>Diese Option sowie einige ausgegraute Auswahl ist leider nicht verfügbar und <b style="text-decoration: underline;">nur</b> auf Anfrage möglich. <br> Klicken Sie auf <b>"Jetzt anfragen"</b>. </p>
+        <button id="close-popup">Schließen</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+const options = document.querySelectorAll('input[name="option"]');
+const stickDropdown = document.getElementById("stick-dropdown");
+const druckDropdown = document.getElementById("druck-dropdown");
+
+var nettoPriceInput = document.getElementById('netto-price');
+var bruttoPriceInput = document.getElementById('brutto-price')
+  var stickRadio = document.getElementById('stick');
+  var druckRadio = document.getElementById('druck');
+
+  // Function to reset the net price
+  function resetNettoPrice() {
+    nettoPriceInput.value = ''; // This will clear the value
+    bruttoPriceInput.value = '';
+  }
+
+  // Add event listeners to radio buttons
+  stickRadio.addEventListener('change', function() {
+    if(stickRadio.checked) {
+      resetNettoPrice();
+    }
+  });
+
+  druckRadio.addEventListener('change', function() {
+    if(druckRadio.checked) {
+      resetNettoPrice();
+    }
+  });
+
+function updateDisplay() {
+  const selectedOption = document.querySelector('input[name="option"]:checked').value;
+  
+  if (selectedOption === "stick") {
+    stickDropdown.style.display = "block";
+    druckDropdown.style.display = "none";
+  } else if (selectedOption === "druck") {
+    druckDropdown.style.display = "block";
+    stickDropdown.style.display = "none";
+  }
+}
+
+options.forEach(function(option) {
+  option.addEventListener('change', updateDisplay);
+});
+
+updateDisplay();
+});
+    
+    const tbestellenRadio = document.getElementById('tbestellen');
+    const tbestelltextInput = document.getElementById('tbestelltext');
+    const tvorhandenRadio = document.getElementById('tvorhanden');
+    tbestellenRadio.addEventListener('change', function() {
+      if (tbestellenRadio.checked) {
+        tbestelltextInput.style.display = 'block';
+      } else {
+        tbestelltextInput.style.display = 'none';
+      }
+    });
+    tvorhandenRadio.addEventListener('change', function() {
+      if (tvorhandenRadio.checked) {
+        tbestelltextInput.style.display = 'none';
+      }
+    });
+
+    function calculateTotalPrice() {
+      const option = document.querySelector('input[name="option"]:checked').value;
+      const size = document.getElementById("size").value;
+      const quantity = parseFloat(document.getElementById("quantity").value);
+      const filling = parseFloat(document.querySelector('input[name="filling"]:checked').value);
+
+      let nettoPrice = 0;
+      if (option === "stick") {
+        if (size === "10x5") {
+          if (filling === 0.25) {
+            if (quantity >= 1 && quantity <= 8) {
+              nettoPrice = 6.05 * quantity;
+            } else if (quantity >= 9 && quantity <= 12) {
+              nettoPrice = (6.05 * 8) + (3.38 * (quantity - 8));
+            } else if (quantity >= 13 && quantity <= 48) {
+              nettoPrice = (6.05 * 8) + (3.38 * 4) + (2.93 * (quantity - 12));
+            } else if (quantity >= 49 && quantity <= 96) {
+              nettoPrice = (6.05 * 8) + (3.38 * 4) + (2.93 * 36) + (2.52 * (quantity - 48));
+            } else if (quantity >= 97 && quantity <= 250) {
+              nettoPrice = (6.05 * 8) + (3.38 * 4) + (2.93 * 36) + (2.52 * 48) + (2.12 * (quantity - 96));
+            }
+          } else if (filling === 0.50) {
+            if (quantity >= 1 && quantity <= 8) {
+              nettoPrice = 7.60 * quantity;
+            } else if (quantity >= 9 && quantity <= 12) {
+              nettoPrice = (7.60 * 8) + (6.08 * (quantity - 8));
+            } else if (quantity >= 13 && quantity <= 48) {
+              nettoPrice = (7.60 * 8) + (6.08 * 4) + (5.32 * (quantity - 12));
+            } else if (quantity >= 49 && quantity <= 96) {
+              nettoPrice = (7.60 * 8) + (6.08 * 4) + (5.32 * 36) + (4.56 * (quantity - 48));
+            } else if (quantity >= 97 && quantity <= 250) {
+              nettoPrice = (7.60 * 8) + (6.08 * 4) + (5.32 * 36) + (4.56 * 48) + (3.80 * (quantity - 96));
+            }
+          } else if (filling === 0.75) {
+            if (quantity >= 1 && quantity <= 8) {
+              nettoPrice = 9.10 * quantity;
+            } else if (quantity >= 9 && quantity <= 12) {
+              nettoPrice = (9.10 * 8) + (7.28 * (quantity - 8));
+            } else if (quantity >= 13 && quantity <= 48) {
+              nettoPrice = (9.10 * 8) + (7.28 * 4) + (6.37 * (quantity - 12));
+            } else if (quantity >= 49 && quantity <= 96) {
+              nettoPrice = (9.10 * 8) + (7.28 * 4) + (6.37 * 36) + (5.46 * (quantity - 48));
+            } else if (quantity >= 97 && quantity <= 250) {
+              nettoPrice = (9.10 * 8) + (7.28 * 4) + (6.37 * 36) + (5.46 * 48) + (4.55 * (quantity - 96));
+            }
+          } else if (filling === 1.00) {
+            if (quantity >= 1 && quantity <= 8) {
+              nettoPrice = 10.65 * quantity;
+            } else if (quantity >= 9 && quantity <= 12) {
+              nettoPrice = (10.65 * 8) + (8.52 * (quantity - 8));
+            } else if (quantity >= 13 && quantity <= 48) {
+              nettoPrice = (10.65 * 8) + (8.52 * 4) + (7.46 * (quantity - 12));
+            } else if (quantity >= 49 && quantity <= 96) {
+              nettoPrice = (10.65 * 8) + (8.52 * 4) + (7.46 * 36) + (6.39 * (quantity - 48));
+            } else if (quantity >= 97 && quantity <= 250) {
+              nettoPrice = (10.65 * 8) + (8.52 * 4) + (7.46 * 36) + (6.39 * 48) + (5.33 * (quantity - 96));
+            }
+          }
+        } else if (size === "10x10") {
+          if (filling === 0.25) {
+            if (quantity >= 1 && quantity <= 8) {
+              nettoPrice = 7.60 * quantity;
+            } else if (quantity >= 9 && quantity <= 12) {
+              nettoPrice = (7.60 * 8) + (6.08 * (quantity - 8));
+            } else if (quantity >= 13 && quantity <= 48) {
+              nettoPrice = (7.60 * 8) + (6.08 * 4) + (5.32 * (quantity - 12));
+            } else if (quantity >= 49 && quantity <= 96) {
+              nettoPrice = (7.60 * 8) + (6.08 * 4) + (5.32 * 36) + (4.56 * (quantity - 48));
+            } else if (quantity >= 97 && quantity <= 250) {
+              nettoPrice = (7.60 * 8) + (6.08 * 4) + (5.32 * 36) + (4.56 * 48) + (3.80 * (quantity - 96));
+            }
+          } else if (filling === 0.50) {
+            if (quantity >= 1 && quantity <= 8) {
+              nettoPrice = 10.65 * quantity;
+            } else if (quantity >= 9 && quantity <= 12) {
+              nettoPrice = (10.65 * 8) + (8.52 * (quantity - 8));
+            } else if (quantity >= 13 && quantity <= 48) {
+              nettoPrice = (10.65 * 8) + (8.52 * 4) + (7.46 * (quantity - 12));
+            } else if (quantity >= 49 && quantity <= 96) {
+              nettoPrice = (10.65 * 8) + (8.52 * 4) + (7.46 * 36) + (6.39 * (quantity - 48));
+            } else if (quantity >= 97 && quantity <= 250) {
+              nettoPrice = (10.65 * 8) + (8.52 * 4) + (7.46 * 36) + (6.39 * 48) + (5.33 * (quantity - 96));
+            }
+          } else if (filling === 0.75) {
+            if (quantity >= 1 && quantity <= 8) {
+              nettoPrice = 13.65 * quantity;
+            } else if (quantity >= 9 && quantity <= 12) {
+              nettoPrice = (13.65 * 8) + (10.92 * (quantity - 8));
+            } else if (quantity >= 13 && quantity <= 48) {
+              nettoPrice = (13.65 * 8) + (10.92 * 4) + (9.55 * (quantity - 12));
+            } else if (quantity >= 49 && quantity <= 96) {
+              nettoPrice = (13.65 * 8) + (10.92 * 4) + (9.55 * 36) + (8.19 * (quantity - 48));
+            } else if (quantity >= 97 && quantity <= 250) {
+              nettoPrice = (13.65 * 8) + (10.92 * 4) + (9.55 * 36) + (8.19 * 48) + (6.83 * (quantity - 96));
+            }
+          } else if (filling === 1.00) {
+            if (quantity >= 1 && quantity <= 8) {
+              nettoPrice = 16.75 * quantity;
+            } else if (quantity >= 9 && quantity <= 12) {
+              nettoPrice = (16.75 * 8) + (13.40 * (quantity - 8));
+            } else if (quantity >= 13 && quantity <= 48) {
+              nettoPrice = (16.75 * 8) + (13.40 * 4) + (11.72 * (quantity - 12));
+            } else if (quantity >= 49 && quantity <= 96) {
+              nettoPrice = (16.75 * 8) + (13.40 * 4) + (11.72 * 36) + (10.05 * (quantity - 48));
+            } else if (quantity >= 97 && quantity <= 250) {
+              nettoPrice = (16.75 * 8) + (13.40 * 4) + (11.72 * 36) + (10.05 * 48) + (8.36 * (quantity - 96));
+            }
+          }
+        } else if (size === "20x10") {
+          if (filling === 0.25) {
+            if (quantity >= 1 && quantity <= 8) {
+              nettoPrice = 10.65 * quantity;
+            } else if (quantity >= 9 && quantity <= 12) {
+              nettoPrice = (10.65 * 8) + (8.52 * (quantity - 8));
+            } else if (quantity >= 13 && quantity <= 48) {
+              nettoPrice = (10.65 * 8) + (8.52 * 4) + (7.46 * (quantity - 12));
+            } else if (quantity >= 49 && quantity <= 96) {
+              nettoPrice = (10.65 * 8) + (8.52 * 4) + (7.46 * 36) + (6.39 * (quantity - 48));
+            } else if (quantity >= 97 && quantity <= 250) {
+              nettoPrice = (10.65 * 8) + (8.52 * 4) + (7.46 * 36) + (6.39 * 48) + (5.33 * (quantity - 96));
+            }
+          } else if (filling === 0.50) {
+            if (quantity >= 1 && quantity <= 8) {
+              nettoPrice = 16.75 * quantity;
+            } else if (quantity >= 9 && quantity <= 12) {
+              nettoPrice = (16.75 * 8) + (13.40 * (quantity - 8));
+            } else if (quantity >= 13 && quantity <= 48) {
+              nettoPrice = (16.75 * 8) + (13.40 * 4) + (11.72 * (quantity - 12));
+            } else if (quantity >= 49 && quantity <= 96) {
+              nettoPrice = (16.75 * 8) + (13.40 * 4) + (11.72 * 36) + (10.05 * (quantity - 48));
+            } else if (quantity >= 97 && quantity <= 250) {
+              nettoPrice = (16.75 * 8) + (13.40 * 4) + (11.72 * 36) + (10.05 * 48) + (8.38 * (quantity - 96));
+            }
+          } else if (filling === 0.75) {
+            if (quantity >= 1 && quantity <= 8) {
+              nettoPrice = 22.80 * quantity;
+            } else if (quantity >= 9 && quantity <= 12) {
+              nettoPrice = (22.80 * 8) + (18.24 * (quantity - 8));
+            } else if (quantity >= 13 && quantity <= 48) {
+              nettoPrice = (22.80 * 8) + (18.24 * 4) + (15.96 * (quantity - 12));
+            } else if (quantity >= 49 && quantity <= 96) {
+              nettoPrice = (22.80 * 8) + (18.24 * 4) + (15.96 * 36) + (13.68 * (quantity - 48));
+            } else if (quantity >= 97 && quantity <= 250) {
+              nettoPrice = (22.80 * 8) + (18.24 * 4) + (15.96 * 36) + (13.68 * 48) + (11.40 * (quantity - 96));
+            }
+          } else if (filling === 1.00) {
+            if (quantity >= 1 && quantity <= 8) {
+              nettoPrice = 29.00 * quantity;
+            } else if (quantity >= 9 && quantity <= 12) {
+              nettoPrice = (29.00 * 8) + (23.20 * (quantity - 8));
+            } else if (quantity >= 13 && quantity <= 48) {
+              nettoPrice = (29.00 * 8) + (23.20 * 4) + (20.30 * (quantity - 12));
+            } else if (quantity >= 49 && quantity <= 96) {
+              nettoPrice = (29.00 * 8) + (23.20 * 4) + (20.30 * 36) + (17.40 * (quantity - 48));
+            } else if (quantity >= 97 && quantity <= 250) {
+              nettoPrice = (29.00 * 8) + (23.20 * 4) + (20.30 * 36) + (17.40 * 48) + (14.50 * (quantity - 96));
+            }
+          }
+        } else if (size === "30x10") {
+          if (filling === 0.25) {
+            if (quantity >= 1 && quantity <= 8) {
+              nettoPrice = 13.70 * quantity;
+            } else if (quantity >= 9 && quantity <= 12) {
+              nettoPrice = (13.70 * 8) + (10.96 * (quantity - 8));
+            } else if (quantity >= 13 && quantity <= 48) {
+              nettoPrice = (13.70 * 8) + (10.96 * 4) + (9.59 * (quantity - 12));
+            } else if (quantity >= 49 && quantity <= 96) {
+              nettoPrice = (13.70 * 8) + (10.96 * 4) + (9.59 * 36) + (8.22 * (quantity - 48));
+            } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = (13.70 * 8) + (10.96 * 4) + (9.59 * 36) + (8.22 * 48) + (6.85 * (quantity - 96));
+              }
+            } else if (filling === 0.50) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 22.90 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = (22.90 * 8) + (18.32 * (quantity - 8));
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = (22.90 * 8) + (18.32 * 4) + (16.03 * (quantity - 12));
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = (22.90 * 8) + (18.32 * 4) + (16.03 * 36) + (13.74 * (quantity - 48));
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = (22.90 * 8) + (18.32 * 4) + (16.03 * 36) + (13.74 * 48) + (11.45 * (quantity - 96));
+              }
+            } else if (filling === 0.75) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 31.95 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = (31.95 * 8) + (25.56 * (quantity - 8));
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = (31.95 * 8) + (25.56 * 4) + (22.36 * (quantity - 12));
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = (31.95 * 8) + (25.56 * 4) + (22.36 * 36) + (19.17 * (quantity - 48));
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = (31.95 * 8) + (25.56 * 4) + (22.36 * 36) + (19.17 * 48) + (15.97 * (quantity - 96));
+              }
+            } else if (filling === 1.00) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 41.25 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = (41.25 * 8) + (33.00 * (quantity - 8));
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = (41.25 * 8) + (33.00 * 4) + (28.88 * (quantity - 12));
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = (41.25 * 8) + (33.00 * 4) + (28.88 * 36) + (24.75 * (quantity - 48));
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = (41.25 * 8) + (33.00 * 4) + (28.88 * 36) + (24.75 * 48) + (20.63 * (quantity - 96));
+              }
+            }
+          } else if (size === "20x20") {
+            if (filling === 0.25) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 16.75 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = (16.75 * 8) + (13.40 * (quantity - 8));
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = (16.75 * 8) + (13.40 * 4) + (11.72 * (quantity - 12));
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = (16.75 * 8) + (13.40 * 4) + (11.72 * 36) + (10.05 * (quantity - 48));
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = (16.75 * 8) + (13.40 * 4) + (11.72 * 36) + (10.05 * 48) + (8.38 * (quantity - 96));
+              }
+            } else if (filling === 0.50) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 29.00 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = (29.00 * 8) + (23.20 * (quantity - 8));
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = (29.00 * 8) + (23.20 * 4) + (20.30* (quantity - 12));
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = (29.00 * 8) + (23.20 * 4) + (20.30 * 36) + (17.40 * (quantity - 48));
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = (29.00 * 8) + (23.20 * 4) + (20.30 * 36) + (17.40 * 48) + (14.50 * (quantity - 96));
+              }
+            } else if (filling === 0.75) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 41.10 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = (41.10 * 8) + (32.88 * (quantity - 8));
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = (41.10 * 8) + (32.88 * 4) + (28.77 * (quantity - 12));
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = (41.10 * 8) + (32.88 * 4) + (28.77 * 36) + (24.66 * (quantity - 48));
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = (41.10 * 8) + (32.88 * 4) + (28.77 * 36) + (24.66 * 48) + (20.55 * (quantity - 96));
+              }
+            } else if (filling === 1.00) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 53.50 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = (53.50 * 8) + (42.80 * (quantity - 8));
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = (53.50 * 8) + (42.80 * 4) + (37.45 * (quantity - 12));
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = (53.50 * 8) + (42.80 * 4) + (37.45 * 36) + (32.10 * (quantity - 48));
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = (53.50 * 8) + (42.80 * 4) + (37.45 * 36) + (32.10 * 48) + (26.75 * (quantity - 96));
+              }
+            }
+          } else if (size === "30x20") {
+            if (filling === 0.25) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 22.90 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = (22.90 * 8) + (18.32 * (quantity - 8));
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = (22.90 * 8) + (18.32 * 4) + (16.03 * (quantity - 12));
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = (22.90 * 8) + (18.32 * 4) + (16.03 * 36) + (13.74 * (quantity - 48));
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = (22.90 * 8) + (18.32 * 4) + (16.03 * 36) + (13.74 * 48) + (11.45 * (quantity - 96));
+              }
+            } else if (filling === 0.50) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 41.25 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = 41.25 * 8 + 33.00 * (quantity - 8);
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = 41.25 * 8 + 33.00 * 4 + 28.88 * (quantity - 12);
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = 41.25 * 8 + 33.00 * 4 + 28.88 * 36 + 24.75 * (quantity - 48);
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = 41.25 * 8 + 33.00 * 4 + 28.88 * 36 + 24.75 * 48 + 20.63 * (quantity - 96);
+              }
+            } else if (filling === 0.75) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 59.40 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = 59.40 * 8 + 47.52 * (quantity - 8);
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = 59.40 * 8 + 47.52 * 4 + 41.58 * (quantity - 12);
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = 59.40 * 8 + 47.52 * 4 + 41.58 * 36 + 35.64 * (quantity - 48);
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = 59.40 * 8 + 47.52 * 4 + 41.58 * 36 + 35.64 * 48 + 29.70 * (quantity - 96);
+              }
+            } else if (filling === 1.00) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 78.00 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = 78.00 * 8 + 62.40 * (quantity - 8);
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = 78.00 * 8 + 62.40 * 4 + 54.60 * (quantity - 12);
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = 78.00 * 8 + 62.40 * 4 + 54.60 * 36 + 46.80 * (quantity - 48);
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = 78.00 * 8 + 62.40 * 4 + 54.60 * 36 + 46.80 * 48 + 39.00 * (quantity - 96);
+              }
+            }
+          } else if (size === "30x30") {
+            if (filling === 0.25) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 32.10 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = (32.10 * 8) + (25.68 * (quantity - 8));
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = (32.10 * 8) + (25.68 * 4) + (22.47 * (quantity - 12));
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = (32.10 * 8) + (25.68 * 4) + (22.47 * 36) + (19.26 * (quantity - 48));
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = (32.10 * 8) + (25.68 * 4) + (22.47 * 36) + (19.26 * 48) + (16.05 * (quantity - 96));
+              }
+            } else if (filling === 0.50) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 59.65 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = 59.65 * 8 + 47.72 * (quantity - 8);
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = 59.65 * 8 + 47.72 * 4 + 41.75 * (quantity - 12);
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = 59.65 * 8 + 47.72 * 4 + 41.75 * 36 + 35.79 * (quantity - 48);
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = 59.65 * 8 + 47.72 * 4 + 41.75 * 36 + 35.79 * 48 + 29.82 * (quantity - 96);
+              }
+            } else if (filling === 0.75) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 86.85 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = 86.85 * 8 + 69.48 * (quantity - 8);
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = 86.85 * 8 + 69.48 * 4 + 60.79 * (quantity - 12);
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = 86.85 * 8 + 69.48 * 4 + 60.79 * 36 + 52.11 * (quantity - 48);
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = 86.85 * 8 + 69.48 * 4 + 60.79 * 36 + 52.11 * 48 + 43.42 * (quantity - 96);
+              }
+            } else if (filling === 1.00) {
+              if (quantity > 0) {
+                document.getElementById("filling100").disabled = true;
+              }
+            }
+          } else if (size === "40x35") {
+            if (filling === 0.25) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 47.40 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = (47.40 * 8) + (37.92 * (quantity - 8));
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = (47.40 * 8) + (37.92 * 4) + (33.18 * (quantity - 12));
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = (47.40 * 8) + (37.92 * 4) + (33.18 * 36) + (28.44 * (quantity - 48));
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = (47.40 * 8) + (37.92 * 4) + (33.18 * 36) + (28.44 * 48) + (23.70 * (quantity - 96));
+              }
+            } else if (filling === 0.50) {
+              if (quantity >= 1 && quantity <= 8) {
+                nettoPrice = 90.25 * quantity;
+              } else if (quantity >= 9 && quantity <= 12) {
+                nettoPrice = 90.25 * 8 + 72.20 * (quantity - 8);
+              } else if (quantity >= 13 && quantity <= 48) {
+                nettoPrice = 90.25 * 8 + 72.20 * 4 + 63.17 * (quantity - 12);
+              } else if (quantity >= 49 && quantity <= 96) {
+                nettoPrice = 90.25 * 8 + 72.20 * 4 + 63.17 * 36 + 54.15 * (quantity - 48);
+              } else if (quantity >= 97 && quantity <= 250) {
+                nettoPrice = 90.25 * 8 + 72.20 * 4 + 63.17 * 36 + 54.15 * 48 + 45.13 * (quantity - 96);
+              }
+            } else if (filling === 0.75) {
+              if (quantity > 0) {
+                document.getElementById("filling75").disabled = true;
+              } else if (filling === 1.00) {
+                if (quantity > 0) {
+                  document.getElementById("filling100").disabled = true;
+                }
+              }
+            }
+          }
+        }
+        
+        const stickdatei = document.querySelector('input[name="stickdatei"]:checked').value;
+        const stickdateiRadio = document.getElementById('sticknein');
+        if (stickdateiRadio.checked) {
+          // "sticknein" ist ausgewählt
+          // Fügen Sie den Festpreis von 60 zum Nettopreis hinzu
+          nettoPrice += 60;
+        }
+        const mwst = 0.19 * nettoPrice; // 19% Mehrwertsteuer
+        const bruttoPrice = nettoPrice + mwst;
+        document.getElementById("netto-price").value = nettoPrice.toFixed(2);
+        document.getElementById("brutto-price").value = bruttoPrice.toFixed(2);
+      }
+      const sizeSelect = size;
+      const filling25Radio = document.getElementById('filling25');
+      const filling50Radio = document.getElementById('filling50');
+      const filling75Radio = document.getElementById('filling75');
+      const filling100Radio = document.getElementById('filling100');
+      sizeSelect.addEventListener('change', function() {
+        const selectedSize = sizeSelect.value;
+        switch (selectedSize) {
+          case "40x35":
+            // "75%" und "100%" radio optionen deaktiviert
+            filling75Radio.disabled = true;
+            filling100Radio.disabled = true;
+            filling25Radio.checked = false;
+            filling50Radio.checked = false;
+            filling75Radio.checked = false;
+            filling100Radio.checked = false;
+            break;
+          case "30x30":
+            // "100%" radio option deaktiviert
+            filling75Radio.disabled = false; // aktiviert
+            filling100Radio.disabled = true;
+            filling75Radio.checked = false;
+            filling100Radio.checked = false;
+            break;
+          default:
+            // aktiviert für andere Größen
+            filling75Radio.disabled = false;
+            filling100Radio.disabled = false;
+            filling25Radio.checked = false;
+            filling50Radio.checked = false;
+            filling75Radio.checked = false;
+            filling100Radio.checked = false;
+        }
+      });
+
+      const fillingImage25 = document.getElementById('fillingImage25');
+      const fillingImage50 = document.getElementById('fillingImage50');
+      const fillingImage75 = document.getElementById('fillingImage75');
+      const fillingImage100 = document.getElementById('fillingImage100');
+      // Function to show the appropriate image based on the selected Filling option
+      function showFillingImage() {
+        fillingImage25.style.display = 'none';
+        fillingImage50.style.display = 'none';
+        fillingImage75.style.display = 'none';
+        fillingImage100.style.display = 'none';
+        switch (true) {
+          case filling25Radio.checked:
+            fillingImage25.style.display = 'block';
+            break;
+          case filling50Radio.checked:
+            fillingImage50.style.display = 'block';
+            break;
+          case filling75Radio.checked:
+            fillingImage75.style.display = 'block';
+            break;
+          case filling100Radio.checked:
+            fillingImage100.style.display = 'block';
+            break;
+          default:
+            break;
+        }
+      }
+      // Füllmenge Beispielbilder anzeigen
+      filling25Radio.addEventListener('change', showFillingImage);
+      filling50Radio.addEventListener('change', showFillingImage);
+      filling75Radio.addEventListener('change', showFillingImage);
+      filling100Radio.addEventListener('change', showFillingImage);
+      showFillingImage();
+
+
+      function showButton() {
+        var group1Radios = document.querySelectorAll('input[name="filling"]');
+        var group2Radios = document.querySelectorAll('input[name="stickdatei"]');
+        var group1Selected = Array.from(group1Radios).some(radio => radio.checked);
+        var group2Selected = Array.from(group2Radios).some(radio => radio.checked);
+        switch (true) {
+          case group1Selected && group2Selected:
+            anfrageButton.style.display = "block";
+            break;
+          default:
+            anfrageButton.style.display = "none";
+            break;
+        }
+      }
+
+    
+      //////// Anfrage Button und PopUp anzeigen/ausblenden
+      const popup = document.getElementById('popup');
+      const closePopup = document.getElementById('close-popup');
+      const anfrageButton = document.getElementById('anfrage-button');
+      quantity.addEventListener('input', function() {
+        const inputValue = parseInt(quantity.value);
+        if (inputValue > 250) {
+          anfrageButton.style.display = 'block'; // Button anzeigen
+          popup.style.display = 'flex'; // PopUp anzeigen
+        } else {
+          anfrageButton.style.display = 'none'; // Button ausblenden
+          popup.style.display = 'none'; // PopUp ausblenden
+        }
+      });
+
+      closePopup.addEventListener('click', function() {
+        // Wenn auf "Schließen" geklickt wird, das Popup ausblenden
+        popup.style.display = 'none';
+      });
+
+      
+    </script>
+  </body>
+</html>
